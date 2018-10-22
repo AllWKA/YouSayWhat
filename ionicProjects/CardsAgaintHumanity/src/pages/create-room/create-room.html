@@ -1,0 +1,81 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>createRoom</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="fixedContent">
+    <ion-grid>
+
+        <ion-grid class="fixedForm">
+
+            <ion-row>
+
+                <ion-item>
+
+                    <ion-input type="text" placeholder="Nick" [(ngModel)]="player.nick"></ion-input>
+
+                </ion-item>
+
+            </ion-row>
+            <ion-row>
+
+                <ion-item>
+
+                    <ion-input type="text" placeholder="Time to Answer" [(ngModel)]="room.tta"></ion-input>
+
+                </ion-item>
+
+            </ion-row>
+            <ion-row>
+
+                <ion-item>
+
+                    <ion-input type="text" placeholder="Max Players" [(ngModel)]="room.maxPlayers"></ion-input>
+
+                </ion-item>
+
+            </ion-row>
+
+        </ion-grid>
+
+
+        <ion-row>
+
+            <ion-row>
+                <h6 class="fixedh6">Avatar</h6>
+            </ion-row>
+
+            <ion-row>
+                <ion-slides (ionSlideDidChange)="slideChanged()">
+
+                    <ion-slide>
+                        <img src="../../assets/imgs/av1.png" alt="av1">
+                    </ion-slide>
+
+                    <ion-slide>
+                        <img src="../../assets/imgs/av2.jpg" alt="av2">
+                    </ion-slide>
+
+                    <ion-slide>
+                        <img src="../../assets/imgs/av3.png" alt="av3">
+                    </ion-slide>
+                    <ion-slide>
+                        <img src="../../assets/imgs/av4.png" alt="av4">
+                    </ion-slide>
+
+                </ion-slides>
+            </ion-row>
+
+
+
+        </ion-row>
+
+        <ion-col class="fixedCol2"> <button ion-button class="fixedButtonStyle2" (click)="submitCreate()">Create</button>
+        </ion-col>
+
+    </ion-grid>
+</ion-content>
