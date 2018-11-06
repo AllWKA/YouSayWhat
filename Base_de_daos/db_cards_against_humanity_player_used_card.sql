@@ -16,11 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `player_used_card`
+--
+
+DROP TABLE IF EXISTS `player_used_card`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `player_used_card` (
+  `player_id` int(11) NOT NULL,
+  `card_id` int(11) NOT NULL,
+  PRIMARY KEY (`player_id`,`card_id`),
+  KEY `fk1_idx` (`card_id`) /*!80000 INVISIBLE */,
+  CONSTRAINT `fk1_player_used_card` FOREIGN KEY (`card_id`) REFERENCES `card` (`id`),
+  CONSTRAINT `fk2_player_used_card` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `player_used_card`
 --
 
 LOCK TABLES `player_used_card` WRITE;
 /*!40000 ALTER TABLE `player_used_card` DISABLE KEYS */;
+INSERT INTO `player_used_card` VALUES (6,6);
 /*!40000 ALTER TABLE `player_used_card` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -33,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-22  7:00:25
+-- Dump completed on 2018-11-06 20:02:31
