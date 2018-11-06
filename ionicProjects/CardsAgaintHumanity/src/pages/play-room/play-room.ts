@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, NavParams, AlertController, AlertController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController} from 'ionic-angular';
 import { CardService } from '../card/card';
 import { PlayerService } from '../player-service/player-service';
 import { GlobalProvider } from '../golbal-provider/global-provider';
@@ -57,7 +57,6 @@ export class PlayRoomPage {
   }
   pick3() {
     this.globalProvider.fullcard[0] = this.globalProvider.cards[3];
-    console.log("asd",this.globalProvider.cards[3]);
     
     this.endPick();
   }
