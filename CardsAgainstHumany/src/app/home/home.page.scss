@@ -1,1 +1,20 @@
-
+.margin{margin-top: 19%;}
+ion-content{
+    --background: linear-gradient(white,black,black);
+}
+ion-title{
+    margin-top: 5%;
+    text-align: center;
+    font-size: 200%;
+}
+@font-face {
+  font-family: text;
+  src: url(../../assets/fonts/GloriaHallelujah-Regular.ttf);
+}
+*{
+    font-family: text;
+    font-weight: bold;
+}
+*{
+    font-size: 110%;
+}
