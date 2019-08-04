@@ -1,13 +1,17 @@
-<ion-content>
+<ion-content class="content">
   <ion-title>
-    Cards Against Humanity
+    Cards Against <br> Humanity
   </ion-title>
-  <ion-grid class="margin">
-    <ion-row justify-content-center>
-      <ion-button shape="round" size="large" expand="full" color="dark">Create Room</ion-button>
+  <ion-grid class="margin grid">
+    <ion-row class="row-style">
+      <ion-button href="/create-room" class="button1">
+        Create Room
+      </ion-button>
     </ion-row>
-    <ion-row justify-content-center class="margin">
-      <ion-button shape="round" size="large" color="light">Join Room</ion-button>
+    <ion-row class="row-style">
+      <ion-button href="/join-room" class="button2">
+        Join Room
+      </ion-button>
     </ion-row>
   </ion-grid>
 </ion-content>

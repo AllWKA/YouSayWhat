@@ -1,20 +1,35 @@
-.margin{margin-top: 19%;}
-ion-content{
-    --background: linear-gradient(white,black,black);
-}
 ion-title{
-    margin-top: 5%;
     text-align: center;
-    font-size: 200%;
+    margin-top: 5%;
+    margin-left: 15%;
+    text-align: center;
+    width: 70%;
+    border: 10px solid black;
+    border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
 }
-@font-face {
-  font-family: text;
-  src: url(../../assets/fonts/GloriaHallelujah-Regular.ttf);
-}
+
 *{
     font-family: text;
     font-weight: bold;
 }
-*{
-    font-size: 110%;
+.content{
+    height: 100vh;
+    width: 100vw;
+}
+.grid{
+    height: 35%;
+    width: 100%;
+}
+.row-style{
+    height: 100%;
+    width: 100%;
+}
+ion-button{
+    margin-top: 16%;
+    margin-left: 25%;
+    font-size: 100%;
+    height: 50%;
+    width: 50%;
+    color: white;
+    --background: black;
 }

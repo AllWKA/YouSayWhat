@@ -1,0 +1,36 @@
+ion-title{
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 15%;
+    text-align: center;
+    width: 70%;
+    border: 10px solid black;
+    border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+}
+form{
+    margin-top: 10%;
+}
+ion-label{
+    margin-left: 25%;
+    text-align: center;
+}
+ion-input{
+    margin-left: 25%;
+    margin-top: 1%;
+    width: 50%;
+    background-color: rgb(0, 0, 0);
+    --placeholder-color: white;
+}
+*{
+    font-family: text;
+}
+ion-button{
+    margin-top: 5%;
+    margin-left: 25%;
+    font-size: 120%;
+    width: 50%;
+    color: white;
+    --background: black;
+    border: 2px solid black;
+    padding: 2px;
+}

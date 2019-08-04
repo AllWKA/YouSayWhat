@@ -1,5 +1,7 @@
 {
   "name": "CardsAgainstHumany",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
