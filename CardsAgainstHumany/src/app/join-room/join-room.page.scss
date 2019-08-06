@@ -1,0 +1,38 @@
+ion-title{
+    text-align: center;
+    width: 100%;
+    border: 10px solid black;
+}
+form{
+}
+ion-label{
+    // margin-left: 20%;
+    text-align: center;
+}
+ion-input{
+    color: white;
+    margin-bottom: 30%;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    --placeholder-color: white;
+}
+*{
+    font-family: text;
+}
+ion-button{
+    margin-top: 5%;
+    font-size: 200%;
+    width: 100%;
+    color: white;
+    --background: black;
+}
+ion-list{
+    width: 100%;
+    overflow: scroll;
+    height: 103%;
+    border: 5px solid black;
+}
+.row-style{
+    height: 100%;
+    width: 100%;
+}
