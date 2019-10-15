@@ -3,11 +3,18 @@ ion-title{
     width: 100%;
     border: 10px solid black;
 }
-form{
-}
 ion-label{
-    // margin-left: 20%;
     text-align: center;
+}
+.form-container{
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+}
+.form-container * {
+    flex:1;
 }
 ion-input{
     color: white;
@@ -21,18 +28,8 @@ ion-input{
 }
 ion-button{
     margin-top: 5%;
-    font-size: 200%;
+    font-size: 130%;
     width: 100%;
     color: white;
     --background: black;
-}
-ion-list{
-    width: 100%;
-    overflow: scroll;
-    height: 103%;
-    border: 5px solid black;
-}
-.row-style{
-    height: 100%;
-    width: 100%;
 }
