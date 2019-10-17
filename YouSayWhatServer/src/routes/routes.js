@@ -5,6 +5,8 @@ const userController = require("../controllers/usersController");
 
 const roomUri = '/rooms'
 //ROOMS ROUTES
-router.get(roomUri, roomController.getRooms)
+router.get(roomUri, roomController.getRooms);
+router.post(roomUri, roomController.createRoom);
+router.delete(roomUri + '/:id', roomController.delRoom);
 
 module.exports = router;
