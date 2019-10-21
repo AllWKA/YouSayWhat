@@ -1,4 +1,5 @@
 const playerModel = require("../models/player");
+const roomModel = require("../models/room")
 
 module.exports = { getPlayers, delPlayer, createPlayer, joinRoom }
 
@@ -17,6 +18,9 @@ function createPlayer(req, res) {
         .then(player => res.json(player))
         .catch(err => res.json(err));
 }
-function joinRoom(req, res) {
-
+async function joinRoom(req, res) {
+    const player = await playerModel.findById({ _id: req.body.player.data._id });
+    const room = await roomModel.findById({ _id: req.body.room.data._id });
+    room.players.push(player._id)
+    return await room.save((result) => res.json(result));
 }
