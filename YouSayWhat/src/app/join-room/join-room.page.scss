@@ -6,11 +6,14 @@ ion-title{
 ion-label{
     text-align: center;
 }
+form{
+    height: 100%;
+}
 .form-container{
     margin: 5%;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    max-height: 30%;
     text-align: center;
 }
 .form-container * {
@@ -18,7 +21,7 @@ ion-label{
 }
 ion-input{
     color: white;
-    margin-bottom: 30%;
+    margin-bottom: 10%;
     width: 100%;
     background-color: rgb(0, 0, 0);
     --placeholder-color: white;

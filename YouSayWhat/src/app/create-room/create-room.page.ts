@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import axios from "axios";
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-create-room',
   templateUrl: './create-room.page.html',
@@ -19,14 +20,15 @@ export class CreateRoomPage implements OnInit {
     nick: ""
   };
 
-  constructor() { }
+  constructor(private route: Router) {
+  }
 
   ngOnInit() {
   }
   deleteRoom(id: string) {
     axios.delete(this.roomURI + "/" + id)
       .then(room => {
-        console.log(room)
+        alert("room:" + room.data.name + " was not created.")
       })
       .catch(err => alert(err))
   }
@@ -37,7 +39,6 @@ export class CreateRoomPage implements OnInit {
       player = await this.createUser();
       if (player != false) {
         this.joinRoom(player, room)
-        console.log("joined")
       } else {
         this.deleteRoom(room["data"]["_id"]);
         alert("player not created")
@@ -49,27 +50,21 @@ export class CreateRoomPage implements OnInit {
   createUser() {
     return axios.post(this.userURI, this.userParameters)
       .then(user => {
-        if (user) {
-          return user
-        } else {
-          return false
-        }
+        if (user) { return user }
+        else { return false }
       })
       .catch(err => {
         alert(err);
         return false;
-      })
+      });
   }
   joinRoom(player: Object, room: Object) {
-    return axios.post(this.userURI + "/join", { player: player, room: room })
+    return axios.post(this.userURI + "/join", { player: player["data"], room: room["data"] })
       .then(joined => {
         if (joined) {
-          console.log(joined)
-          //change page
+          this.route.navigateByUrl('/play-room?player=' + player["data"]["_id"] + '&room=' + room["data"]["_id"])
           return true
-        } else {
-          return false
-        }
+        } else { return false }
       })
       .catch(err => {
         alert(err);
@@ -77,9 +72,12 @@ export class CreateRoomPage implements OnInit {
       })
   }
   validations(): Boolean {
+
     if (this.roomParameters["name"] != "" && this.roomParameters["pwd"] != "" && this.userParameters["nick"] != "") {
+
       return true;
     } else {
+
       alert("some field is null")
       return false;
     }

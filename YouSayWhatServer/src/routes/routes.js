@@ -9,6 +9,7 @@ const playerUri = '/players'
 
 //ROOMS ROUTES
 router.get(roomUri, roomsController.getRooms);
+router.get(roomUri + '/:name', roomsController.getRoomByName);
 router.post(roomUri, roomsController.createRoom);
 router.delete(roomUri + '/:id', roomsController.delRoom);
 //USERS ROUTES

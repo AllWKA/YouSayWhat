@@ -6,12 +6,12 @@
     <div class="form-container">
       <form action="">
         <ion-label for="">Room Name</ion-label>
-        <ion-input></ion-input>
+        <ion-input name="name" [(ngModel)]="roomName"></ion-input>
         <ion-label for="">PassWord</ion-label>
         <ion-input></ion-input>
-        <ion-label for="">User Name</ion-label>
-        <ion-input></ion-input>
-        <ion-button>Search</ion-button>
+        <ion-label for="">Player Nick</ion-label>
+        <ion-input name="nick" [(ngModel)]="userParameters.nick"></ion-input>
+        <ion-button (click)="join()">Search</ion-button>
       </form>
     </div>
   </ion-grid>
