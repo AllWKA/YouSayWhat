@@ -19,9 +19,8 @@ function createPlayer(req, res) {
         .catch(err => res.json(err));
 }
 async function joinRoom(req, res) {
-    console.log(req.body)
     const player = await playerModel.findById({ _id: req.body.player._id });
     const room = await roomModel.findById({ _id: req.body.room._id });
     room.players.push(player._id)
-    return await room.save((result) => res.json(result));
+    return newRoom = await room.save((result) => res.json(result));
 }

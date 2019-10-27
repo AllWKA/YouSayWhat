@@ -37,12 +37,12 @@ export class JoinRoomPage implements OnInit {
     }
   }
   joinRoom(player: Object, room: Object) {
-    console.log("joining....\n" + JSON.stringify(player) + "\n\n" + JSON.stringify(room))
-    return axios.post(this.userURI + "/join", { player: player["data"], room: room["data"] })
+    return axios.post(this.userURI + "/join", { player: player["data"], room: room["data"][0] })
       .then(joined => {
         if (joined) {
-          console.log(joined);
-          this.route.navigateByUrl('/play-room?player=' + player["_id"] + '&room=' + room["_id"])
+          this.route.navigateByUrl('/play-room?player='
+            + player["data"]["_id"] + '&room='
+            + room["data"][0]["_id"])
           return true
         } else { return false }
       })

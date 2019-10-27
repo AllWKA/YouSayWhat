@@ -62,7 +62,9 @@ export class CreateRoomPage implements OnInit {
     return axios.post(this.userURI + "/join", { player: player["data"], room: room["data"] })
       .then(joined => {
         if (joined) {
-          this.route.navigateByUrl('/play-room?player=' + player["data"]["_id"] + '&room=' + room["data"]["_id"])
+          this.route.navigateByUrl('/play-room?player='
+            + player["data"]["_id"] + '&room='
+            + room["data"]["_id"])
           return true
         } else { return false }
       })
@@ -72,12 +74,11 @@ export class CreateRoomPage implements OnInit {
       })
   }
   validations(): Boolean {
-
-    if (this.roomParameters["name"] != "" && this.roomParameters["pwd"] != "" && this.userParameters["nick"] != "") {
-
+    if (this.roomParameters["name"] != ""
+      && this.roomParameters["pwd"] != ""
+      && this.userParameters["nick"] != "") {
       return true;
     } else {
-
       alert("some field is null")
       return false;
     }
