@@ -9,35 +9,31 @@
     flex-direction: column;
     max-width: 100vw;
 }
-.column-class *{
+.column-class row-class{
     flex:1;
 }
 p{
     text-align: center;
+    font-size: 100%;
 }
 h2{
     text-align: center;
 }
 ion-card{
-    height: 80%;
-    width: 90%;
     background-color: black;
-}
-ion-card *{
-    color:white;
-}
-ion-card-content{
-    width: 100%;
+    width: 50%;
     height: 100%;
+    color:white;
+    padding: 4%;
+    font-size: 100%;
     text-align: center;
 }
 .white{
-    // height: 50vh;
-    height: 40vh;
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
 }
 .white *{
-    flex: 0 0 auto;
+    flex: 1 0 auto;
+    size: 100%;
 }

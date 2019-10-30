@@ -1,11 +1,25 @@
 const playerModel = require("../models/player");
 const roomModel = require("../models/room")
 
-module.exports = { getPlayers, delPlayer, createPlayer, joinRoom }
+module.exports = { getPlayers, getPlayer, delPlayer, createPlayer, joinRoom }
 
 function getPlayers(req, res) {
     return playerModel.find()
         .then(players => res.json(players))
+        .catch(err => res.json(err))
+}
+function getPlayer(req, res) {
+    return playerModel.findById(req.params.id)
+        .then(player => res.json(player))
+        .catch(err => res.json(err))
+}
+function getPlayersFromRoom(req, res) {
+    return playerModel.find()
+        .then(players => {
+            players.filter((player) => {
+                return player
+            })
+        })
         .catch(err => res.json(err))
 }
 function delPlayer(req, res) {

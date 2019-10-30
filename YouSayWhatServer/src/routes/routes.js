@@ -14,6 +14,7 @@ router.post(roomUri, roomsController.createRoom);
 router.delete(roomUri + '/:id', roomsController.delRoom);
 //USERS ROUTES
 router.get(playerUri, playersController.getPlayers);
+router.get(playerUri + '/:id', playersController.getPlayer);
 router.post(playerUri, playersController.createPlayer);
 router.post(playerUri + "/join", playersController.joinRoom);
 router.delete(playerUri + '/:id', playersController.delPlayer);

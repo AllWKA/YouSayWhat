@@ -9,8 +9,8 @@ import { Router } from "@angular/router";
 })
 export class JoinRoomPage implements OnInit {
 
-  roomURI: string = "http://localhost:3000/api/v1/rooms";
-  userURI: string = "http://localhost:3000/api/v1/players";
+  roomURI: string = "http://172.17.165.65:3000/api/v1/rooms";
+  userURI: string = "http://172.17.165.65:3000/api/v1/players";
   userParameters: Object = {
     nick: ""
   };
