@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { Router } from "@angular/router";
+import { Platform } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-join-room',
@@ -9,14 +11,14 @@ import { Router } from "@angular/router";
 })
 export class JoinRoomPage implements OnInit {
 
-  roomURI: string = "http://172.17.165.65:3000/api/v1/rooms";
-  userURI: string = "http://172.17.165.65:3000/api/v1/players";
+  roomURI: string = "http://localhost:3000/api/v1/rooms";
+  userURI: string = "http://localhost:3000/api/v1/players";
   userParameters: Object = {
     nick: ""
   };
   roomName: String = "";
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, public platform: Platform, private storage: Storage) { }
 
   ngOnInit() {
   }
@@ -37,6 +39,16 @@ export class JoinRoomPage implements OnInit {
     }
   }
   joinRoom(player: Object, room: Object) {
+    if (this.platform.is('mobile')) {
+      this.storage.set('player', player);
+      this.storage.set('room', room)
+      this.route.navigateByUrl('/play-room')
+      return true
+    } else {
+      return this.joinAsWeb(player,room)
+    }
+  }
+  joinAsWeb(player: Object, room: Object) {
     return axios.post(this.userURI + "/join", { player: player["data"], room: room["data"][0] })
       .then(joined => {
         if (joined) {
@@ -47,7 +59,7 @@ export class JoinRoomPage implements OnInit {
         } else { return false }
       })
       .catch(err => {
-        alert(err);
+        alert("ERROR:" + err);
         return false;
       })
   }

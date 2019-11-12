@@ -1,39 +1,36 @@
 <div class="column-class">
   <div class="row-class" id="black">
     <div class="column-class">
-      <ion-card class="white-text">
+      <ion-card class="black">
         <p>{{black.content}}</p>
         <p>{{black.author}}</p>
       </ion-card>
     </div>
   </div>
   <div class="row-class" id="players">
-    <div class="column-class">
-      <ion-card class="white-text">
-        1º Bryan <br> 55
-      </ion-card>
-    </div>
-    <div class="column-class">
-      <ion-card class="white-text">
-        1º Bryan <br> 55
-      </ion-card>
-    </div>
-    <div class="column-class">
-      <ion-card class="white-text">
-        1º Bryan <br> 55
+    <div class="column-class players-cards" *ngFor="let player of topPlayers; let i = index">
+      <ion-card class="white-text player-card first">
+        <p>{{i+1}}º</p>
+        <p>{{player.nick}}</p>
+        <p>pts: {{player.pts}}</p>
       </ion-card>
     </div>
   </div>
   <div class="row-class" id="player-info">
     <p>{{player.nick}}</p>
     <p>pts: {{player.pts}}</p>
-    <p>round: {{round}}</p>
+    <p>round:{{round}}</p>
   </div>
   <div class="row-class white" id="my-whites">
-    <ion-card *ngFor="let white of whites">
+    <ion-card *ngFor="let white of whites" (click)='sendWhite(white)'>
       <p>{{white.content}}</p>
       <p>{{white.author}}</p>
     </ion-card>
+  </div>
+  <div class="row-class">
+    <div class="column-class scroll">
+      <p *ngFor="let message of messages">{{message}}</p>
+    </div>
   </div>
   <!-- <div class="row-class white" id="players-whites"></div> -->
 </div>

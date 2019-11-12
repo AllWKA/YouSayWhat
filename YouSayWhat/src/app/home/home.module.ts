@@ -23,8 +23,8 @@ import { HomePage } from './home.page';
   declarations: [HomePage]
 })
 export class HomePageModule {
-  constructor(private socket: Socket) { }
+  constructor() { }
   ngOnInit() {
-    this.socket.connect();
+
   }
 }

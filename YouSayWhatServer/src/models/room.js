@@ -16,8 +16,17 @@ const RoomSchema = new mongoose.Schema({
         required: [true, "password required"]
     },
     players: [{
-        type: Schema.Types.ObjectId
-    }]
+        type: Schema.Types.ObjectId,
+        ref: "player"
+    }],
+    ready: {
+        type: Number,
+        default: 0
+    },
+    started: {
+        type: Boolean,
+        default: false
+    }
 
 });
 

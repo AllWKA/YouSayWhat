@@ -1,5 +1,6 @@
 .row-class{
     display: flex;
+    justify-content: space-between;
 }
 .row-class *{
     flex:1;
@@ -7,10 +8,18 @@
 .column-class{
     display: flex;
     flex-direction: column;
+    //align-items: s;
     max-width: 100vw;
 }
 .column-class row-class{
     flex:1;
+}
+.players-cards{
+    flex-basis: 33.3333%;
+}
+.player-card{
+    width: 100%;
+    font-size: 100%;
 }
 p{
     text-align: center;
@@ -20,10 +29,8 @@ h2{
     text-align: center;
 }
 ion-card{
-    background-color: black;
     width: 50%;
     height: 100%;
-    color:white;
     padding: 4%;
     font-size: 100%;
     text-align: center;
@@ -36,4 +43,38 @@ ion-card{
 .white *{
     flex: 1 0 auto;
     size: 100%;
+    background-color: white;
+    color: black;
+}
+.black{
+    background-color: black;
+    color: white;
+    align-self: center;
+}
+.first{
+    background-color: yellow;
+    color:black
+}
+.second{
+    background-color: grey;
+    color: white;
+}
+.third{
+    background-color: rgb(179, 116, 0);
+    color: white;
+}
+#players :nth-child(2) ion-card{
+    background-color: silver;
+}
+#players :nth-child(3) ion-card{
+    background-color: brown;
+}
+#players ion-card{
+    // margin: 5%;
+    padding: 0%;
+}
+.scroll{
+    width: 110px;
+    height: 110px;
+    overflow: scroll;
 }
