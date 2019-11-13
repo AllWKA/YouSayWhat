@@ -19,7 +19,6 @@ const roomController = require('./src/controllers/roomsController')
 
 const app = express();
 
-
 app.use(cors());
 app.use(express.json());
 app.use("/api/v1", v1Routes);

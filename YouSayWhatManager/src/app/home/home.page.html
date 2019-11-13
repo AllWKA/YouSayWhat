@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Hello! you sexy programmer ;)
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="row-class">
+    <div class="column-class black-list">
+      <ul class="scroll">
+        <li *ngFor="let black of blacks">
+          <p>{{black["content"]}}</p>
+          <p>{{black["author"]}}</p>
+          <button (click)="deleteBlack(black['_id'])">eliminate</button>
+        </li>
+      </ul>
+    </div>
+    <div class="column-class form-class">
+      <form class="column-class" (ngSubmit)="sendBlack($event)">
+        <label for="content">Content:</label>
+        <input
+          type="text"
+          name="content"
+          id="content"
+          [(ngModel)]="form['content']"
+        />
+        <label for="author">Author:</label>
+        <input
+          type="text"
+          name="author"
+          id="author"
+          [(ngModel)]="form['author']"
+        />
+        <button>send</button>
+      </form>
+    </div>
+  </div>
+</ion-content>
