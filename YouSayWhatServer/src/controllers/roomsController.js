@@ -48,8 +48,9 @@ async function playerReady(req) {
     const room = await roomModel.findById(req.roomID);
     if (room) {
         room.ready++;
-        if (room.ready == room.players.length) {
+        if (room.ready >= room.players.length) {
             room.started = true;
+            room.newBlack = true;
         }
         return await room.save();
     } else {

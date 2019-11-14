@@ -3,7 +3,6 @@ const blackModel = require("../models/black");
 module.exports = { getBlacks, getBlack, delBlack, createBlack, updateBlack };
 
 function getBlacks(req, res) {
-  console.log("hi")
   return blackModel
     .find()
     .then(Blacks => res.json(Blacks))
