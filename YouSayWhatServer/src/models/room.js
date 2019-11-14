@@ -32,6 +32,10 @@ const RoomSchema = new mongoose.Schema({
   newBlack: {
     type: Boolean,
     default: false
+  },
+  black: {
+    type: Schema.Types.ObjectId,
+    ref: "black"
   }
 });
 

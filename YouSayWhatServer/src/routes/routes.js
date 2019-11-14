@@ -12,7 +12,8 @@ const blackUri = '/blacks'
 //ROOMS ROUTES
 router.get(roomUri, roomsController.getRooms);
 router.get(roomUri + '/:name', roomsController.getRoomByName);
-router.get(roomUri+'/top/:id',roomsController.getTop)
+router.get(roomUri + '/top/:id', roomsController.getTop);
+router.get(roomUri + 'ById/:id', roomsController.getRoom);
 router.post(roomUri, roomsController.createRoom);
 router.put(roomUri+'/playerReady/:id', roomsController.playerReady)
 router.delete(roomUri + '/:id', roomsController.delRoom);

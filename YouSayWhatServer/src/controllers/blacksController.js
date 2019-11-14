@@ -9,9 +9,13 @@ function getBlacks(req, res) {
     .catch(err => res.json(err));
 }
 function getBlack(req, res) {
+  console.log(req.params.id)
   return blackModel
     .findById(req.params.id)
-    .then(black => res.json(black))
+    .then(black => {
+      console.log("black:",black)
+      res.json(black)
+    })
     .catch(err => res.json(err));
 }
 function updateBlack(req, res) {

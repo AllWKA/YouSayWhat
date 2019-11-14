@@ -32,26 +32,20 @@ const io = SocketIO(server);
 io.on('connection', (socket) => {
     socket.on('player-ready', async (content) => {
         const room = await roomController.playerReady(content);
-        console.log(room)
         io.emit(content.roomID + '/playerReady');
         if (room.started) {
-            io.emit(content.roomID + '/black', { content: 'try from back', author: 'allwka' });
-            if (room.newBlack) {
-                //TODO: arregla esta mierda pls
-                io.emit(content.roomID + '/newRoom');
+            // if (room.newBlack) {
+                io.emit(content.roomID + '/newBlack');
                 room.newBlack = false;
                 room.ready = 0;
-                console.log(room)
-                console.log(await room.update());
-            }
+                room.black = await roomController.getNewBlack();
+                await room.update(room)
+            // }
         }
     });
     socket.on('white', (white) => {
         io.emit(white.room + '/playerWhite', white)
     });
-    // socket.on("ready", white => {
-    //   io.emit(white.room + "/playerReady", white);
-    // });
 });
 console.log("Conecting to mongo... ");
 mongoose.connect(
