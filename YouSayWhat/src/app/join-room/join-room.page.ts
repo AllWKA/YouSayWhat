@@ -11,18 +11,22 @@ import { Storage } from '@ionic/storage';
 })
 export class JoinRoomPage implements OnInit {
 
-  roomURI: string = "http://localhost:3000/api/v1/rooms";
-  userURI: string = "http://localhost:3000/api/v1/players";
+  roomURI: string = "http://192.168.0.11:3000/api/v1/rooms";
+  userURI: string = "http://192.168.0.11:3000/api/v1/players";
   userParameters: Object = {
     nick: ""
   };
-  roomName: String = "";
+  roomName: String = "room";
 
   constructor(private route: Router, public platform: Platform, private storage: Storage) { }
 
   ngOnInit() {
+    this.getRoom()
   }
   async getRoom() {
+    console.log("starting");
+    console.log(this.roomName);
+    console.log(this.roomURI + "/" + this.roomName);
     return await axios.get(this.roomURI + "/" + this.roomName);
   }
   async createPlayer() {

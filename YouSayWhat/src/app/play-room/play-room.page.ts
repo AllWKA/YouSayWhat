@@ -19,10 +19,10 @@ export class PlayRoomPage implements OnInit {
     private socket: Socket,
     private route: ActivatedRoute,
     public alertController: AlertController,
-    private back:BackEndServiceService
+    private back: BackEndServiceService
   ) {}
 
-  ip: string = "http://192.168.0.14:3000/api/v1/";
+  ip: string = "http://192.168.0.11:3000/api/v1/";
   local: string = "http://localhost:3000/api/v1";
   roomURI: string = this.local + "/rooms";
   playerURI: string = this.local + "/players";
@@ -64,12 +64,9 @@ export class PlayRoomPage implements OnInit {
       console.log("player ready");
     });
     this.socket.on(this.roomID + "/newBlack", () => {
-      console.log("jiji")
       this.updateRoom();
     });
-    this.socket.on(this.roomID + "/playerReady", () => {
-      console.log("a player is ready");
-    });
+    this.socket.on(this.roomID + "/playerReady", () => {});
     this.socket.on(this.roomID + "/playerWhite", white => {
       this.messages.unshift(
         this.black["content"] + white.white.content + "\n" + white.player.nick
@@ -78,10 +75,8 @@ export class PlayRoomPage implements OnInit {
   }
   async updateRoom() {
     const room = await this.back.getRoom(this.roomID);
-    const newBlack = await this.back.getBlack(room['data']['black']);
-    console.log(newBlack);
+    const newBlack = await this.back.getBlack(room["data"]["black"]);
     this.black = newBlack.data;
-    console.log(this.black);
   }
   sendWhite(white) {
     const myWhite = {
@@ -90,6 +85,10 @@ export class PlayRoomPage implements OnInit {
       room: this.roomID
     };
     this.socket.emit("white", myWhite);
+    this.socket.emit("player-ready", {
+      roomID: this.roomID,
+      playerID: this.playerID
+    });
     this.getWhites();
   }
   getPlayer() {
