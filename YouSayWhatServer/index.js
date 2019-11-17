@@ -7,6 +7,7 @@ const SocketIO = require("socket.io");
 
 const v1Routes = require(path.join(__dirname, 'src', 'routes', 'routes.js'));
 const config = require(path.join(__dirname, 'config.js'));
+
 const socketsControllerConection = require(
     path.join(
         __dirname,
@@ -23,7 +24,9 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/v1", v1Routes);
 
-const server = app.listen(config.port, () => {
+app.set('port',process.env.PORT||config.port)
+
+const server = app.listen(app.get('port'), () => {
     console.log(`server on: ${config.url}${config.port}`);
 })
 

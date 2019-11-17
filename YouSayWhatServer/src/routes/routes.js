@@ -8,7 +8,7 @@ const roomUri = '/rooms';
 const playerUri = '/players';
 const blackUri = '/blacks'
 
-
+router.get("/", (req, res) => res.send("hola"));
 //ROOMS ROUTES
 router.get(roomUri, roomsController.getRooms);
 router.get(roomUri + '/:name', roomsController.getRoomByName);
