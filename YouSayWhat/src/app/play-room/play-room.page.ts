@@ -22,10 +22,10 @@ export class PlayRoomPage implements OnInit {
     private back: BackEndServiceService
   ) {}
 
-  ip: string = "http://192.168.0.11:3000/api/v1/";
+  ip: string = "https://yousaywhayserver.herokuapp.com/api/v1/";
   local: string = "http://localhost:3000/api/v1";
-  roomURI: string = this.local + "/rooms";
-  playerURI: string = this.local + "/players";
+  roomURI: string = this.ip + "/rooms";
+  playerURI: string = this.ip + "/players";
 
   roomID: string = "";
   playerID: string = "";

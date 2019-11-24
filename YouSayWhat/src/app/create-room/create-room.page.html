@@ -4,13 +4,13 @@
   </ion-title>
   <form action="">
     <ion-label for="">Room Name</ion-label>
-    <ion-input require="true" name="name" [(ngModel)]="roomParameters.name"></ion-input>
+    <ion-input require="true" name="name" [(ngModel)]="roomParameters['name']"></ion-input>
     <ion-label for="">Max Players</ion-label>
-    <ion-input name="password" required="true" [(ngModel)]="roomParameters.maxPlayers"></ion-input>
+    <ion-input name="password" required="true" [(ngModel)]="roomParameters['maxPlayers']"></ion-input>
     <ion-label for="">PassWord</ion-label>
-    <ion-input name="pwd" [(ngModel)]="roomParameters.pwd"></ion-input>
+    <ion-input name="pwd" [(ngModel)]="roomParameters['pwd']"></ion-input>
     <ion-label for="">User Name</ion-label>
-    <ion-input name="nick" required="true" [(ngModel)]="userParameters.nick"></ion-input>
+    <ion-input name="nick" required="true" [(ngModel)]="userParameters['nick']"></ion-input>
     <ion-button (click)="createRoom()">Create</ion-button>
   </form>
 </ion-content>

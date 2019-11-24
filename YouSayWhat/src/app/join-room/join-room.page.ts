@@ -11,8 +11,8 @@ import { Storage } from '@ionic/storage';
 })
 export class JoinRoomPage implements OnInit {
 
-  roomURI: string = "http://192.168.0.11:3000/api/v1/rooms";
-  userURI: string = "http://192.168.0.11:3000/api/v1/players";
+  roomURI: string = "https://yousaywhayserver.herokuapp.com/api/v1/rooms";
+  userURI: string = "https://yousaywhayserver.herokuapp.com/api/v1/players";
   userParameters: Object = {
     nick: ""
   };

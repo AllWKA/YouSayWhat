@@ -8,8 +8,8 @@ import { Router } from "@angular/router";
 })
 export class CreateRoomPage implements OnInit {
 
-  roomURI: string = "http://localhost:3000/api/v1/rooms";
-  userURI: string = "http://localhost:3000/api/v1/players";
+  roomURI: string = "https://yousaywhayserver.herokuapp.com/api/v1/rooms";
+  userURI: string = "https://yousaywhayserver.herokuapp.com/api/v1/players";
 
   roomParameters: Object = {
     name: "",
@@ -28,7 +28,7 @@ export class CreateRoomPage implements OnInit {
   deleteRoom(id: string) {
     axios.delete(this.roomURI + "/" + id)
       .then(room => {
-        alert("room:" + room.data.name + " was not created.")
+        alert("room:" + room['data']['name'] + " was not created.")
       })
       .catch(err => alert(err))
   }
