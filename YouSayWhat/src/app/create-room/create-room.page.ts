@@ -1,85 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import axios from "axios";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { BackEndServiceService } from "../services/back-end-service.service";
+
 @Component({
-  selector: 'app-create-room',
-  templateUrl: './create-room.page.html',
-  styleUrls: ['./create-room.page.scss'],
+  selector: "app-create-room",
+  templateUrl: "./create-room.page.html",
+  styleUrls: ["./create-room.page.scss"]
 })
 export class CreateRoomPage implements OnInit {
-
-  roomURI: string = "https://yousaywhayserver.herokuapp.com/api/v1/rooms";
-  userURI: string = "https://yousaywhayserver.herokuapp.com/api/v1/players";
-
   roomParameters: Object = {
     name: "",
     maxPlayers: 2,
-    pwd: "",
+    pwd: ""
   };
   userParameters: Object = {
     nick: ""
   };
 
-  constructor(private route: Router, private back:BackEndServiceService) {
-  }
-
-  ngOnInit() {
-  }
-  deleteRoom(id: string) {
-    console.log(this.back.deleteRoom(id));
-  }
+  constructor(private route: Router, private back: BackEndServiceService) { }
+  ngOnInit(){}
   async createRoom() {
-    const room: Object = await this.back.createRoom(this.roomParameters);
-    var player: Object = {};
-    if (room) {
-      player = await this.back.createUser(this.userParameters);
-      if (player != false) {
-        this.joinRoom(player, room)
-      } else {
-        this.deleteRoom(room["data"]["_id"]);
-        alert("player not created")
+    if (this.validations()) {
+      try {
+        const room: Object = await this.back.createRoom(this.roomParameters);
+        const player: Object = await this.back.createUser(this.userParameters);
+        this.back.joinRoom(player, room);
+        this.route.navigateByUrl('/play-room?player='
+          + player["data"]["_id"] + '&room='
+          + room["data"]["_id"])
+      } catch (error) {
+        alert(error)
       }
-    } else {
-      alert("room not created");
     }
   }
-  createUser() {
-    return axios.post(this.userURI, this.userParameters)
-      .then(user => {
-        if (user) { return user }
-        else { return false }
-      })
-      .catch(err => {
-        alert(err);
-        return false;
-      });
-  }
-  joinRoom(player: Object, room: Object) {
-    return axios.post(this.userURI + "/join", { player: player["data"], room: room["data"] })
-      .then(joined => {
-        if (joined) {
-          this.route.navigateByUrl('/play-room?player='
-            + player["data"]["_id"] + '&room='
-            + room["data"]["_id"])
-          return true
-        } else { return false }
-      })
-      .catch(err => {
-        alert(err);
-        return false;
-      })
-  }
   validations(): Boolean {
-    if (this.roomParameters["name"] != ""
-      && this.roomParameters["pwd"] != ""
-      && this.userParameters["nick"] != "") {
+    if (
+      this.roomParameters["name"] != "" &&
+      this.roomParameters["pwd"] != "" &&
+      this.userParameters["nick"] != ""
+    ) {
       return true;
     } else {
-      alert("some field is null")
+      alert("some field is null");
       return false;
     }
   }
-
-
 }
