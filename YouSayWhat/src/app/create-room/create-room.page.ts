@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import axios from "axios";
 import { Router } from "@angular/router";
+import { BackEndServiceService } from "../services/back-end-service.service";
 @Component({
   selector: 'app-create-room',
   templateUrl: './create-room.page.html',
@@ -20,23 +21,19 @@ export class CreateRoomPage implements OnInit {
     nick: ""
   };
 
-  constructor(private route: Router) {
+  constructor(private route: Router, private back:BackEndServiceService) {
   }
 
   ngOnInit() {
   }
   deleteRoom(id: string) {
-    axios.delete(this.roomURI + "/" + id)
-      .then(room => {
-        alert("room:" + room['data']['name'] + " was not created.")
-      })
-      .catch(err => alert(err))
+    console.log(this.back.deleteRoom(id));
   }
   async createRoom() {
-    const room: Object = await axios.post(this.roomURI, this.roomParameters);
+    const room: Object = await this.back.createRoom(this.roomParameters);
     var player: Object = {};
     if (room) {
-      player = await this.createUser();
+      player = await this.back.createUser(this.userParameters);
       if (player != false) {
         this.joinRoom(player, room)
       } else {
