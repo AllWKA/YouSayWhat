@@ -1,18 +1,18 @@
-<ion-content>
-  <ion-title>
-    Cards Against Humanity
-  </ion-title>
-  <ion-grid>
-    <div class="form-container">
-      <form action="">
-        <ion-label for="">Room Name</ion-label>
-        <ion-input name="name" [(ngModel)]="roomName"></ion-input>
-        <ion-label for="">PassWord</ion-label>
-        <ion-input></ion-input>
-        <ion-label for="">Player Nick</ion-label>
-        <ion-input name="nick" [(ngModel)]="userParameters['nick']"></ion-input>
-        <ion-button (click)="join()">Search</ion-button>
-      </form>
+<div class="column-class background-black">
+  <div class="row-class">
+    <h1>You Say... What?</h1>
+  </div>
+  <div class="row-class">
+    <div class="column-class form-class">
+      <ion-label for="">Room Name</ion-label>
+      <ion-input name="name" [(ngModel)]="roomName"></ion-input>
+      <ion-label for="">PassWord</ion-label>
+      <ion-input></ion-input>
+      <ion-label for="">Player Nick</ion-label>
+      <ion-input name="nick" [(ngModel)]="userParameters['nick']"></ion-input>
     </div>
-  </ion-grid>
-</ion-content>
+  </div>
+  <div class="row-class">
+    <ion-button (click)="join()">Search</ion-button>
+  </div>
+</div>
